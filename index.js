@@ -33,6 +33,12 @@ function mainView(state, emit) {
 
       </p>
 
+      <p>
+      Skill credits: ${skillCredits(state)}
+      Extra skill creds:
+      <input type="checkbox" checked=${state.skillCred} onchange=${skillCred} />
+      </p>
+
       ${attributesView(state, emit)}
       ${skillsView(state, emit)}
       </body>
@@ -40,6 +46,13 @@ function mainView(state, emit) {
 
   function changeLevel(event) {
     emit("changeLevel", event.target.value);
+  }
+
+  function skillCredits(state) {
+    return state.level + state.skillCred;
+  }
+  function skillCred(event) {
+    emit("skillCred", event.target.checked);
   }
 }
 
@@ -144,7 +157,8 @@ function skillsView(state, emit) {
 }
 
 function characterStore(state, emitter) {
-  state.level = 0;
+  state.level = 1;
+  state.skillCred = false;
   state.attributes = {
     strength: 10,
     endurance: 10,
@@ -162,6 +176,11 @@ function characterStore(state, emitter) {
 
   emitter.on("changeLevel", function(level) {
     state.level = Number(level);
+    emitter.emit("render");
+  });
+
+  emitter.on("skillCred", function(checked) {
+    state.skillCred = checked;
     emitter.emit("render");
   });
 
