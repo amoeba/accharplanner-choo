@@ -67,8 +67,13 @@ function attributesView(state, emit) {
 
 function skillsView(state, emit) {
   return html`
+  <div id="skills">
+    <h2>Specialized</h2>
+
     <ul>
       ${Object.keys(state.skills).map(function(s) {
+        if (state.skills[s].training !== training.SPECIALIZED) return;
+
         return html`<li>
           ${s}: ${state.skills[s].value} (${state.skills[s].training})
           <button data-skill=${s} onclick=${decreaseTraining}>-</button>
@@ -76,6 +81,49 @@ function skillsView(state, emit) {
         </li>`;
       })}
     </ul>
+
+    <h2>Trained</h2>
+
+    <ul>
+      ${Object.keys(state.skills).map(function(s) {
+        if (state.skills[s].training !== training.TRAINED) return;
+
+        return html`<li>
+          ${s}: ${state.skills[s].value} (${state.skills[s].training})
+          <button data-skill=${s} onclick=${decreaseTraining}>-</button>
+          <button data-skill=${s} onclick=${increaseTraining}>+</button>
+        </li>`;
+      })}
+    </ul>
+
+    <h2>Untrained</h2>
+
+    <ul>
+      ${Object.keys(state.skills).map(function(s) {
+        if (state.skills[s].training !== training.UNTRAINED) return;
+
+        return html`<li>
+          ${s}: ${state.skills[s].value} (${state.skills[s].training})
+          <button data-skill=${s} onclick=${decreaseTraining}>-</button>
+          <button data-skill=${s} onclick=${increaseTraining}>+</button>
+        </li>`;
+      })}
+    </ul>
+
+    <h2>Unusable</h2>
+
+    <ul>
+      ${Object.keys(state.skills).map(function(s) {
+        if (state.skills[s].training !== training.UNUSABLE) return;
+
+        return html`<li>
+          ${s}: ${state.skills[s].value} (${state.skills[s].training})
+          <button data-skill=${s} onclick=${decreaseTraining}>-</button>
+          <button data-skill=${s} onclick=${increaseTraining}>+</button>
+        </li>`;
+      })}
+    </ul>
+    </div>
   `;
 
   function decreaseTraining(event) {
@@ -100,7 +148,7 @@ function characterStore(state, emitter) {
   state.skills = {
     alchemy: {
       value: -1,
-      training: training.TRAINED
+      training: training.SPECIALIZED
     }
   };
 
