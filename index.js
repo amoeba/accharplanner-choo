@@ -28,7 +28,6 @@ function mainView(state, emit) {
   `;
 
   function changeLevel(event) {
-    console.log("changeLevel", event.target.value);
     emit("changeLevel", event.target.value);
   }
 }
@@ -48,11 +47,6 @@ function attributesView(state, emit) {
   `;
 
   function changeAttribute(event) {
-    console.log(
-      "changeAttribute",
-      event.target.dataset.attribute,
-      event.target.value
-    );
     emit("changeAttribute", {
       attribute: event.target.dataset.attribute,
       value: event.target.value
