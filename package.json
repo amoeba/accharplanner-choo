@@ -1,6 +1,6 @@
 {
   "name": "ac-char-planner",
-  "version": "0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "start": "budo index.js:bundle.js -p 3000 --no-debug -- -b bundle-collapser/plugin -g unassertify -g yo-yoify -g uglifyify"
@@ -14,5 +14,9 @@
     "uglifyify": "^3.0.4",
     "unassertify": "^2.0.4",
     "yo-yoify": "^3.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amoeba/accharplanner-choo"
   }
 }
