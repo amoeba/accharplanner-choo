@@ -10,7 +10,6 @@
     "budo": "^9.4.7",
     "bundle-collapser": "^1.2.1",
     "choo": "^5.1.4",
-    "choo-devtools": "^2.3.3",
     "uglifyify": "^3.0.4",
     "unassertify": "^2.0.4",
     "yo-yoify": "^3.7.0"

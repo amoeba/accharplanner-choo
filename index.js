@@ -1,5 +1,4 @@
 var html = require("choo/html");
-// var devtools = require("choo-devtools");
 var choo = require("choo");
 
 // Constants
@@ -11,7 +10,6 @@ const training = {
 };
 
 var app = choo();
-// app.use(devtools());
 app.use(characterStore);
 app.route("/", mainView);
 app.mount("body");
